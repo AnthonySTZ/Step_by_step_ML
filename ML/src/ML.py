@@ -50,10 +50,10 @@ def show_multivariate_plot(dataset: pd.DataFrame) -> None:
 def split_out_validation_dataset(dataset: pd.DataFrame) -> tuple:
 
     array = dataset.values
-    X = array[:, 0:4]
-    y = array[:, 4]
+    x = array[:, 0:4]  # Get all data but just the 0 to 3 dimensions
+    y = array[:, 4]  # Get all data but just the 4th dimension
     X_train, X_validation, Y_train, Y_validation = train_test_split(
-        X, y, test_size=0.20, random_state=1
+        x, y, test_size=0.20, random_state=1
     )
 
     return X_train, X_validation, Y_train, Y_validation
