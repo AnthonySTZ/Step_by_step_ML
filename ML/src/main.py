@@ -2,7 +2,7 @@ import ML
 
 
 def run():
-    url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+    url = "../assets/iris.csv"
     names = ["sepal-length", "sepal-width", "petal-length", "petal-width", "class"]
     dataset = ML.load_dataset(url, names)
     print(dataset)

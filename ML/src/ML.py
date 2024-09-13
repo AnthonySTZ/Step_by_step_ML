@@ -1,5 +1,4 @@
 import pandas as pd
-from pandas import read_csv
 from pandas.plotting import scatter_matrix
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -16,7 +15,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
 
-def load_dataset(url: str, names: list[str]) -> pd.DataFrame:
+def load_dataset(filename: str, names: list[str]) -> pd.DataFrame:
     """Loads a dataset from the given URL"""
-    dataset = read_csv(url, names=names)
+    dataset = pd.read_csv(filename, names=names)
     return dataset
