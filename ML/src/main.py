@@ -1,4 +1,5 @@
 import ML
+from sklearn.svm import SVC
 
 
 def run():
@@ -12,7 +13,9 @@ def run():
     X_train, X_validation, Y_train, Y_validation = ML.split_out_validation_dataset(
         dataset
     )
-    ML.evaluate_models(X_train, Y_train)
+    # ML.evaluate_models(X_train, Y_train)
+    used_model = SVC(gamma="auto")
+    ML.make_predictions_model(used_model, X_train, Y_train, X_validation, Y_validation)
 
 
 if __name__ == "__main__":

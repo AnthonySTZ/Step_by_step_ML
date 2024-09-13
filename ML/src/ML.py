@@ -84,3 +84,13 @@ def evaluate_models(X_train, Y_train) -> None:
     # plt.boxplot(results, labels=names)
     # plt.title("Algorithm Comparison")
     # plt.show()
+
+
+def make_predictions_model(model, X_train, Y_train, X_validation, Y_validation) -> None:
+
+    model.fit(X_train, Y_train)
+    predictions = model.predict(X_validation)
+
+    print(accuracy_score(Y_validation, predictions))
+    print(confusion_matrix(Y_validation, predictions))
+    print(classification_report(Y_validation, predictions))
