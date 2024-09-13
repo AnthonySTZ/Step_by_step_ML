@@ -19,3 +19,12 @@ def load_dataset(filename: str, names: list[str]) -> pd.DataFrame:
     """Loads a dataset from the given URL"""
     dataset = pd.read_csv(filename, names=names)
     return dataset
+
+
+def show_some_dataset_info(dataset: pd.DataFrame) -> None:
+    """Displays some information about the dataset"""
+    print(f"Shape: \n {dataset.shape}")
+    print(f"Head: \n {dataset.head(10)}")
+    print(f"Description: \n {dataset.describe()}")
+    print(f"Group by class: \n 
+          {dataset.groupby('class').size()}")
