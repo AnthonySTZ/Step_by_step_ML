@@ -12,6 +12,7 @@ def run():
     X_train, X_validation, Y_train, Y_validation = ML.split_out_validation_dataset(
         dataset
     )
+    ML.evaluate_models(X_train, Y_train)
 
 
 if __name__ == "__main__":

@@ -57,3 +57,30 @@ def split_out_validation_dataset(dataset: pd.DataFrame) -> tuple:
     )
 
     return X_train, X_validation, Y_train, Y_validation
+
+
+def evaluate_models(X_train, Y_train) -> None:
+    # Spot Check Algorithms
+    models = []
+    models.append(("LR", LogisticRegression(solver="liblinear")))
+    models.append(("LDA", LinearDiscriminantAnalysis()))
+    models.append(("KNN", KNeighborsClassifier()))
+    models.append(("CART", DecisionTreeClassifier()))
+    models.append(("NB", GaussianNB()))
+    models.append(("SVM", SVC(gamma="auto")))
+
+    # evaluate each model in turn
+    results = []
+    names = []
+    for name, model in models:
+        kfold = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
+        cv_results = cross_val_score(
+            model, X_train, Y_train, cv=kfold, scoring="accuracy"
+        )
+        results.append(cv_results)
+        names.append(name)
+        print(f"{name}: {cv_results.mean()} ({cv_results.std()})")
+
+    # plt.boxplot(results, labels=names)
+    # plt.title("Algorithm Comparison")
+    # plt.show()
