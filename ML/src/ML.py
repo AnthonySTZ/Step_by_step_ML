@@ -26,5 +26,22 @@ def show_some_dataset_info(dataset: pd.DataFrame) -> None:
     print(f"Shape: \n {dataset.shape}")
     print(f"Head: \n {dataset.head(10)}")
     print(f"Description: \n {dataset.describe()}")
-    print(f"Group by class: \n 
-          {dataset.groupby('class').size()}")
+    print(f"Group by class: \n {dataset.groupby('class').size()}")
+
+
+def show_univariate_plot(dataset: pd.DataFrame) -> None:
+    """Plot Univariate Dataset"""
+    dataset.plot(kind="box", subplots=True, layout=(2, 2), sharex=False, sharey=False)
+    plt.show()
+
+
+def show_histogram(dataset: pd.DataFrame) -> None:
+    """Plot Histogram"""
+    dataset.hist()
+    plt.show()
+
+
+def show_multivariate_plot(dataset: pd.DataFrame) -> None:
+    """Plot Multivariate Dataset"""
+    scatter_matrix(dataset)
+    plt.show()
